@@ -1,1 +1,3 @@
-../.gitconfig
+[user]
+	name = Mikhail Kuryshev
+	email = tensai@cirno.in
