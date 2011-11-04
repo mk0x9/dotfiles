@@ -21,7 +21,7 @@
         (add-to-list 'load-path name)))))
 
 (require 'nyan-mode)
-;; (nyan-mode) too hardcore for me right now
+;; (nyan-mode) ;; too hardcore for me right now
 (require 'window-numbering)
 (window-numbering-mode 1)
 (require 'nav)
@@ -63,6 +63,7 @@
  '(size-indication-mode t)
  '(tool-bar-mode nil))
 
+;; color-themes sucks
 (if window-system
     (dotimes (i 3) ;; looks like 1 time isn't enough :<
       (progn
