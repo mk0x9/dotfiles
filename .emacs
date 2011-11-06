@@ -15,7 +15,7 @@
   (add-to-list 'load-path base)
   (dolist (f (directory-files base))
     (let ((name (concat base "/" f)))
-      (when (and (file-directory-p name) 
+      (when (and (file-directory-p name)
                  (not (equal f ".."))
                  (not (equal f ".")))
         (add-to-list 'load-path name)))))
@@ -31,6 +31,8 @@
 (ido-mode t)
 (require 'rinari)
 (require 'tramp)
+(require 'rvm)
+(rvm-use-default)
 (load "~/.emacs.d/site-lisp/haskell-mode-2.8.0/haskell-site-file.el")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
@@ -40,6 +42,15 @@
 (setq auto-mode-alist (cons '("Gemfile" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("config.ru" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("Capfile" . ruby-mode) auto-mode-alist))
+
+;; global-whitespace-mode on F7
+(global-set-key [f7] 'global-whitespace-mode)
+
+;; turn off tab-indent for haml-mode
+(add-hook 'haml-mode-hook
+	  '(lambda ()
+	     (setq indent-tabs-mode nil)
+	     (define-key haml-mode-map "\C-m" 'newline-and-indent)))
 
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
