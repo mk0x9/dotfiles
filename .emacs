@@ -27,6 +27,7 @@
 (require 'nav)
 (require 'haml-mode)
 (require 'sass-mode)
+(require 'coffee-mode)
 (require 'ido)
 (ido-mode t)
 (require 'rinari)
@@ -47,10 +48,16 @@
 (global-set-key [f7] 'global-whitespace-mode)
 
 ;; turn off tab-indent for haml-mode
+(add-hook 'coffee-mode-hook
+	  '(lambda ()
+	     (set (make-local-variable 'tab-width) 2)))
 (add-hook 'haml-mode-hook
 	  '(lambda ()
 	     (setq indent-tabs-mode nil)
 	     (define-key haml-mode-map "\C-m" 'newline-and-indent)))
+(add-hook 'js-mode-hook
+	  '(lambda ()
+	     (setq indent-tabs-mode nil)))
 
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
