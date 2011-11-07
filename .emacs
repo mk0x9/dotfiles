@@ -29,6 +29,7 @@
 (require 'sass-mode)
 (require 'coffee-mode)
 (require 'ido)
+(require 'pastebin)
 (ido-mode t)
 (require 'rinari)
 (require 'tramp)
