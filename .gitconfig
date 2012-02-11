@@ -1,3 +1,5 @@
 [user]
 	name = Mikhail Kuryshev
 	email = tensai@cirno.in
+[core]
+	excludesfile = /home/cirno/.gitignore_global
