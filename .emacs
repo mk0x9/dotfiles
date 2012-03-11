@@ -31,7 +31,7 @@
 (require 'ido)
 (require 'pastebin)
 (ido-mode t)
-(require 'rinari)
+;(require 'rinari)
 (require 'tramp)
 (require 'rvm)
 (rvm-use-default)
@@ -44,6 +44,21 @@
 (setq auto-mode-alist (cons '("Gemfile" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("config.ru" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("Capfile" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.handlebars$" . html-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.json.rabl$" . ruby-mode) auto-mode-alist))
+
+;; BOM-hate
+(setq ruby-insert-encoding-magic-comment nil)
+
+;; BOM-love
+(defun insert-BOM()
+  (interactive)
+  (goto-char (point-min))
+  (ucs-insert (string-to-number "FEFF" 16)) 
+)
+
+;; GOTO binding
+(global-set-key "\C-l" 'goto-line)
 
 ;; global-whitespace-mode on F7
 (global-set-key [f7] 'global-whitespace-mode)
@@ -60,12 +75,16 @@
 	  '(lambda ()
 	     (setq indent-tabs-mode nil)))
 
-(custom-set-faces
+
+(autoload 'ghc-init "ghc" nil t)
+(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+
+;(custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#242424" :foreground "#dedede" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 128 :width normal :foundry "unknown" :family "Ubuntu Mono")))))
+; '(default ((t (:inherit nil :stipple nil :background "#242424" :foreground "#dedede" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 128 :width normal :foundry "unknown" :family "Ubuntu Mono")))))
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -82,9 +101,16 @@
  '(size-indication-mode t)
  '(tool-bar-mode nil))
 
-;; color-themes sucks
+; color-themes sucks
 (if window-system
     (dotimes (i 3) ;; looks like 1 time isn't enough :<
       (progn
-	(set-background-color "#242424")
-	(set-foreground-color "#dedede"))))
+	(set-background-color "#dedfdf")
+	(set-foreground-color "#141414"))))
+
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "apple" :family "Monaco")))))
