@@ -9,6 +9,7 @@
 ; (menu-bar-mode)
 (scroll-bar-mode 0)
 (setq inhibit-splash-screen t)
+(setq ring-bell-function 'ignore)
 
 ;; scroll one line at a time (less "jumpy" than defaults)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
@@ -85,3 +86,18 @@
 	(set-foreground-color "#141414"))))
 
 (set-default-font "PT Mono-18")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(fringe-mode (quote (nil . 0)) nil (fringe))
+ '(indicate-buffer-boundaries (quote left))
+ '(indicate-empty-lines t)
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
