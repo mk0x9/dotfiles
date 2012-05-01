@@ -1,14 +1,20 @@
 ;; fullscreen yay
-(x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-		       '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
-(x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-		       '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
+; (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+; 		       '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
+; (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+; 		       '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
 
 ;; hide that crap
-(tool-bar-mode)
-(menu-bar-mode)
-(scroll-bar-mode)
+(tool-bar-mode 0)
+; (menu-bar-mode)
+(scroll-bar-mode 0)
 (setq inhibit-splash-screen t)
+
+;; scroll one line at a time (less "jumpy" than defaults)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq scroll-step 1) ;; keyboard scroll one line at a time
 
 ;; auto add all subdirectories in $HOME/.emacs.d/site-lisp
 (let ((base "~/.emacs.d/site-lisp"))
@@ -20,7 +26,7 @@
                  (not (equal f ".")))
         (add-to-list 'load-path name)))))
 
-(require 'nyan-mode)
+; (require 'nyan-mode)
 ;; (nyan-mode) ;; too hardcore for me right now
 (require 'window-numbering)
 (window-numbering-mode 1)
@@ -31,7 +37,7 @@
 (require 'ido)
 (require 'pastebin)
 (ido-mode t)
-;(require 'rinari)
+; (require 'rinari)
 (require 'tramp)
 (require 'rvm)
 (rvm-use-default)
@@ -46,16 +52,7 @@
 (setq auto-mode-alist (cons '("Capfile" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.handlebars$" . html-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.json.rabl$" . ruby-mode) auto-mode-alist))
-
-;; BOM-hate
-(setq ruby-insert-encoding-magic-comment nil)
-
-;; BOM-love
-(defun insert-BOM()
-  (interactive)
-  (goto-char (point-min))
-  (ucs-insert (string-to-number "FEFF" 16)) 
-)
+(setq auto-mode-alist (cons '("faye.ru" . ruby-mode) auto-mode-alist))
 
 ;; GOTO binding
 (global-set-key "\C-l" 'goto-line)
@@ -76,30 +73,9 @@
 	     (setq indent-tabs-mode nil)))
 
 
-(autoload 'ghc-init "ghc" nil t)
-(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+; (autoload 'ghc-init "ghc" nil t)
+; (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
 
-;(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-; '(default ((t (:inherit nil :stipple nil :background "#242424" :foreground "#dedede" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 128 :width normal :foundry "unknown" :family "Ubuntu Mono")))))
-
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(display-battery-mode t)
- '(fringe-mode (quote (nil . 0)) nil (fringe))
- '(indicate-buffer-boundaries (quote left))
- '(indicate-empty-lines t)
- '(menu-bar-mode nil)
- '(show-paren-mode t)
- '(size-indication-mode t)
- '(tool-bar-mode nil))
 
 ; color-themes sucks
 (if window-system
@@ -108,9 +84,4 @@
 	(set-background-color "#dedfdf")
 	(set-foreground-color "#141414"))))
 
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "apple" :family "Monaco")))))
+(set-default-font "PT Mono-18")
