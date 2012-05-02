@@ -79,13 +79,16 @@
 
 
 ; color-themes sucks
-(if window-system
-    (dotimes (i 3) ;; looks like 1 time isn't enough :<
-      (progn
-	(set-background-color "#dedfdf")
-	(set-foreground-color "#141414"))))
+; (if window-system
+;     (dotimes (i 3) ;; looks like 1 time isn't enough :<
+;       (progn
+; 	(set-background-color "#dedfdf")
+; 	(set-foreground-color "#141414"))))
 
-(set-default-font "PT Mono-18")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/site-lisp/emacs-color-theme-solarized")
+(load-theme 'solarized-light t)
+
+(set-default-font "Monaco-18")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
