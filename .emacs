@@ -12,10 +12,10 @@
 (setq ring-bell-function 'ignore)
 
 ;; scroll one line at a time (less "jumpy" than defaults)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-(setq scroll-step 1) ;; keyboard scroll one line at a time
+(setq scroll-step 2) ;; keyboard scroll one line at a time
 
 ;; auto add all subdirectories in $HOME/.emacs.d/site-lisp
 (let ((base "~/.emacs.d/site-lisp"))
@@ -41,6 +41,13 @@
 ; (require 'rinari)
 (require 'tramp)
 (require 'rvm)
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-resolve)
+;(load "~/.emacs.d/site-lisp/color-theme-gruber-darker/color-theme-gruber-darker.el")
+;(color-theme-gruber-darker)
+;(load "~/.emacs.d/site-lisp/color-theme-less/color-theme-less.el")
+;(color-theme-less)
 (rvm-use-default)
 (load "~/.emacs.d/site-lisp/haskell-mode-2.8.0/haskell-site-file.el")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
@@ -54,12 +61,17 @@
 (setq auto-mode-alist (cons '("\\.handlebars$" . html-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.json.rabl$" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("faye.ru" . ruby-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.jst.dust$" . html-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.coffee.erb$" . coffee-mode) auto-mode-alist))
 
 ;; GOTO binding
 (global-set-key "\C-l" 'goto-line)
 
 ;; global-whitespace-mode on F7
 (global-set-key [f7] 'global-whitespace-mode)
+
+(define-key coffee-mode-map "\C-c\C-l" 'coffee-compile-buffer)
+(setq coffee-command "~/.local/bin/coffee")
 
 ;; turn off tab-indent for haml-mode
 (add-hook 'coffee-mode-hook
@@ -88,7 +100,7 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/site-lisp/emacs-color-theme-solarized")
 (load-theme 'solarized-light t)
 
-(set-default-font "Monaco-18")
+(set-default-font "Inconsolata-20")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
