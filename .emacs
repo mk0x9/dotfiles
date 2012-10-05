@@ -11,11 +11,20 @@
 (setq inhibit-splash-screen t)
 (setq ring-bell-function 'ignore)
 
+(add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path "/Users/cirno/.local/bin")
+
+; turn auto save off
+ (setq backup-directory-alist
+          `((".*" . ,temporary-file-directory)))
+    (setq auto-save-file-name-transforms
+          `((".*" ,temporary-file-directory t)))
+
 ;; scroll one line at a time (less "jumpy" than defaults)
-(setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-scroll-amount '(3 ((shift) . 1))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-(setq scroll-step 2) ;; keyboard scroll one line at a time
+(setq scroll-step 3) ;; keyboard scroll one line at a time
 
 ;; auto add all subdirectories in $HOME/.emacs.d/site-lisp
 (let ((base "~/.emacs.d/site-lisp"))
@@ -26,6 +35,10 @@
                  (not (equal f ".."))
                  (not (equal f ".")))
         (add-to-list 'load-path name)))))
+
+(autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
+(setq auto-mode-alist (cons '("\\.md$" . markdown-mode) auto-mode-alist))
+
 
 ; (require 'nyan-mode)
 ;; (nyan-mode) ;; too hardcore for me right now
@@ -41,9 +54,10 @@
 ; (require 'rinari)
 (require 'tramp)
 (require 'rvm)
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-resolve)
+;(require 'color-theme)
+;(color-theme-initialize)
+;;(color-theme-fischmeister)
+;(color-theme-resolve)
 ;(load "~/.emacs.d/site-lisp/color-theme-gruber-darker/color-theme-gruber-darker.el")
 ;(color-theme-gruber-darker)
 ;(load "~/.emacs.d/site-lisp/color-theme-less/color-theme-less.el")
@@ -91,16 +105,17 @@
 
 
 ; color-themes sucks
-; (if window-system
-;     (dotimes (i 3) ;; looks like 1 time isn't enough :<
-;       (progn
-; 	(set-background-color "#dedfdf")
-; 	(set-foreground-color "#141414"))))
+(if window-system
+    (dotimes (i 3) ;; looks like 1 time isn't enough :<
+      (progn
+	(set-background-color "#eee")
+	(set-foreground-color "#343434"))))
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/site-lisp/emacs-color-theme-solarized")
-(load-theme 'solarized-light t)
+;;(add-to-list 'custom-theme-load-path "~/.emacs.d/site-lisp/emacs-color-theme-solarized")
+;;(load-theme 'solarized-light t)
 
-(set-default-font "Inconsolata-20")
+(set-default-font "Inconsolata-18")
+;(set-default-font "PT Mono-18")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -116,3 +131,27 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(diff-added ((t (:foreground "Green"))))
+ '(diff-removed ((t (:foreground "Red"))))
+ '(erc-timestamp-face ((t (:foreground "darkgrey" :weight bold))))
+ '(font-lock-builtin-face ((t nil)))
+ '(font-lock-comment-delimiter-face ((t nil)))
+ '(font-lock-comment-face ((t nil)))
+ '(font-lock-constant-face ((t nil)))
+ '(font-lock-doc-face ((t nil)))
+ '(font-lock-function-name-face ((t nil)))
+ '(font-lock-keyword-face ((t nil)))
+ '(font-lock-preprocessor-face ((t nil)))
+ '(font-lock-regexp-grouping-backslash ((t nil)))
+ '(font-lock-regexp-grouping-construct ((t nil)))
+ '(font-lock-string-face ((t nil)))
+ '(font-lock-type-face ((t nil)))
+ '(font-lock-variable-name-face ((t nil)))
+ '(font-lock-warning-face ((t nil))))
