@@ -12,7 +12,12 @@
 (setq ring-bell-function 'ignore)
 
 (add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path "/usr/texbin")
 (add-to-list 'exec-path "/Users/cirno/.local/bin")
+(setenv "PATH"
+  (concat "/usr/texbin" ":" "/usr/local/bin" ":" (getenv "PATH")))
+
+(setq scheme-program-name "csi -:c")
 
 ; turn auto save off
  (setq backup-directory-alist
@@ -78,6 +83,11 @@
 (setq auto-mode-alist (cons '("\\.jst.dust$" . html-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.coffee.erb$" . coffee-mode) auto-mode-alist))
 
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
+  (require 'tex-site)
+(load "auctex.el" nil t t)
+(load "preview-latex.el" nil t t)
+
 ;; GOTO binding
 (global-set-key "\C-l" 'goto-line)
 
@@ -108,50 +118,46 @@
 (if window-system
     (dotimes (i 3) ;; looks like 1 time isn't enough :<
       (progn
-	(set-background-color "#eee")
-	(set-foreground-color "#343434"))))
+	(set-background-color "#ffffff")
+	(set-foreground-color "#141414"))))
 
 ;;(add-to-list 'custom-theme-load-path "~/.emacs.d/site-lisp/emacs-color-theme-solarized")
 ;;(load-theme 'solarized-light t)
 
-(set-default-font "Inconsolata-18")
-;(set-default-font "PT Mono-18")
+;(set-default-font "Inconsolata-16")
+(set-default-font "PT Mono-14")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(display-battery-mode t)
  '(fringe-mode (quote (nil . 0)) nil (fringe))
  '(indicate-buffer-boundaries (quote left))
  '(indicate-empty-lines t)
  '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(diff-added ((t (:foreground "Green"))))
+;;  '(diff-removed ((t (:foreground "Red"))))
+;;  '(erc-timestamp-face ((t (:foreground "darkgrey" :weight bold))))
+;;  '(font-lock-builtin-face ((t nil)))
+;;  '(font-lock-comment-delimiter-face ((t nil)))
+;;  '(font-lock-comment-face ((t nil)))
+;;  '(font-lock-constant-face ((t nil)))
+;;  '(font-lock-doc-face ((t nil)))
+;;  '(font-lock-function-name-face ((t nil)))
+;;  '(font-lock-keyword-face ((t nil)))
+;;  '(font-lock-preprocessor-face ((t nil)))
+;;  '(font-lock-regexp-grouping-backslash ((t nil)))
+;;  '(font-lock-regexp-grouping-construct ((t nil)))
+;;  '(font-lock-string-face ((t nil)))
+;;  '(font-lock-type-face ((t nil)))
+;;  '(font-lock-variable-name-face ((t nil)))
+;;  '(font-lock-warning-face ((t nil))))
 
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(diff-added ((t (:foreground "Green"))))
- '(diff-removed ((t (:foreground "Red"))))
- '(erc-timestamp-face ((t (:foreground "darkgrey" :weight bold))))
- '(font-lock-builtin-face ((t nil)))
- '(font-lock-comment-delimiter-face ((t nil)))
- '(font-lock-comment-face ((t nil)))
- '(font-lock-constant-face ((t nil)))
- '(font-lock-doc-face ((t nil)))
- '(font-lock-function-name-face ((t nil)))
- '(font-lock-keyword-face ((t nil)))
- '(font-lock-preprocessor-face ((t nil)))
- '(font-lock-regexp-grouping-backslash ((t nil)))
- '(font-lock-regexp-grouping-construct ((t nil)))
- '(font-lock-string-face ((t nil)))
- '(font-lock-type-face ((t nil)))
- '(font-lock-variable-name-face ((t nil)))
- '(font-lock-warning-face ((t nil))))
+
