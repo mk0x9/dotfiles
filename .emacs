@@ -107,7 +107,7 @@
 	    (define-key haskell-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
 	    (define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
 	    (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
-	    (define-key haskell-mode-map (kbd "M-SPC") 'company-complete)
+	    (define-key haskell-mode-map (kbd "C-M-SPC") 'company-complete)
 	    (company-mode)))
 (add-hook 'company-mode-hook
 	  (lambda ()
