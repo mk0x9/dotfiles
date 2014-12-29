@@ -1,163 +1,129 @@
-;; fullscreen yay
-; (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-; 		       '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
-; (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-; 		       '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
+;; init package.el
+(require 'package)
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.org/packages/"))
+(package-initialize)
 
-;; hide that crap
-(tool-bar-mode 0)
-; (menu-bar-mode)
-(scroll-bar-mode 0)
-(setq inhibit-splash-screen t)
-(setq ring-bell-function 'ignore)
+;; package list
+(load "~/.emacs.d/packages")
+;; functions
+(load "~/.emacs.d/functions")
 
-(add-to-list 'exec-path "/usr/local/bin")
-(add-to-list 'exec-path "/usr/texbin")
-(add-to-list 'exec-path "/Users/cirno/.local/bin")
-(setenv "PATH"
-  (concat "/usr/texbin" ":" "/usr/local/bin" ":" (getenv "PATH")))
+;; visuals
+(add-hook 'after-init-hook
+	  (lambda ()
+	    (load-theme 'solarized-light t)))
+(set-default-font "Ubuntu Mono-14" nil t)
 
-(setq scheme-program-name "csi -:c")
+;; set font for japanese characters
+(dolist (range '((#x3000 . #x303f) (#x3040 . #x309f) (#x30a0 . #x30ff)
+		 (#xff00 . #xffef) (#x4e00 . #x9faf) (#x3400 . #x4dbf)))
+  (set-fontset-font "fontset-default" range "Meiryo-12"))
 
-; turn auto save off
- (setq backup-directory-alist
-          `((".*" . ,temporary-file-directory)))
-    (setq auto-save-file-name-transforms
-          `((".*" ,temporary-file-directory t)))
+;; hooks
+(add-hook 'minibuffer-setup-hook 'conditionally-enable-paredit-mode)
+(add-hook 'text-mode-hook 'auto-fill-mode)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
 
-;; scroll one line at a time (less "jumpy" than defaults)
-(setq mouse-wheel-scroll-amount '(3 ((shift) . 1))) ;; one line at a time
-(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-(setq scroll-step 3) ;; keyboard scroll one line at a time
-
-;; auto add all subdirectories in $HOME/.emacs.d/site-lisp
-(let ((base "~/.emacs.d/site-lisp"))
-  (add-to-list 'load-path base)
-  (dolist (f (directory-files base))
-    (let ((name (concat base "/" f)))
-      (when (and (file-directory-p name)
-                 (not (equal f ".."))
-                 (not (equal f ".")))
-        (add-to-list 'load-path name)))))
-
-(autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
-(setq auto-mode-alist (cons '("\\.md$" . markdown-mode) auto-mode-alist))
-
-
-; (require 'nyan-mode)
-;; (nyan-mode) ;; too hardcore for me right now
-(require 'window-numbering)
-(window-numbering-mode 1)
-(require 'nav)
-(require 'haml-mode)
-(require 'sass-mode)
-(require 'coffee-mode)
-(require 'ido)
-(require 'pastebin)
-(ido-mode t)
-; (require 'rinari)
-(require 'tramp)
-(require 'rvm)
-;(require 'color-theme)
-;(color-theme-initialize)
-;;(color-theme-fischmeister)
-;(color-theme-resolve)
-;(load "~/.emacs.d/site-lisp/color-theme-gruber-darker/color-theme-gruber-darker.el")
-;(color-theme-gruber-darker)
-;(load "~/.emacs.d/site-lisp/color-theme-less/color-theme-less.el")
-;(color-theme-less)
-(rvm-use-default)
-(load "~/.emacs.d/site-lisp/haskell-mode-2.8.0/haskell-site-file.el")
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-
-(setq auto-mode-alist (cons '("\\.js.erb$" . js-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("Rakefile" . ruby-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("Gemfile" . ruby-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("config.ru" . ruby-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("Capfile" . ruby-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.handlebars$" . html-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.json.rabl$" . ruby-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("faye.ru" . ruby-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.jst.dust$" . html-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.coffee.erb$" . coffee-mode) auto-mode-alist))
-
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
-  (require 'tex-site)
-(load "auctex.el" nil t t)
-(load "preview-latex.el" nil t t)
-
-;; GOTO binding
-(global-set-key "\C-l" 'goto-line)
-
-;; global-whitespace-mode on F7
+;; hotkeys
+(global-set-key (kbd "C-l") 'goto-line)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-c M-x") 'execute-extended-command)
 (global-set-key [f7] 'global-whitespace-mode)
 
-(define-key coffee-mode-map "\C-c\C-l" 'coffee-compile-buffer)
-(setq coffee-command "~/.local/bin/coffee")
+;; other stuff
+(set-auto-saves)
+(add-hook 'after-init-hook
+	  (lambda ()
+	    (window-numbering-mode 1)
+	    (setq flycheck-jshintrc "~/.emacs.d/jshintrc")
+	    (setq flycheck-display-errors-delay 0.5)))
+(setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two line at a time
+(setq mouse-progressive-speed nil) ;; no acceleration
+(setq scroll-step 1) ;; keyboard scroll one line at a time
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(ido-mode t)
+(setq inhibit-startup-message t)
+(setq inhibit-startup-echo-message t)
+(show-paren-mode 1)
+(line-number-mode 1)
+(column-number-mode 1)
+(size-indication-mode 1)
+(display-battery-mode 1)
+(setq default-major-mode 'text-mode)
+(setq-default cursor-type 'bar)
+(set-language-environment "UTF-8")
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8-unix)
 
-;; turn off tab-indent for haml-mode
-(add-hook 'coffee-mode-hook
-	  '(lambda ()
-	     (set (make-local-variable 'tab-width) 2)))
-(add-hook 'haml-mode-hook
-	  '(lambda ()
-	     (setq indent-tabs-mode nil)
-	     (define-key haml-mode-map "\C-m" 'newline-and-indent)))
+;; web
 (add-hook 'js-mode-hook
-	  '(lambda ()
-	     (setq indent-tabs-mode nil)))
+	  (lambda ()
+	    (setq js-indent-level 2)
+	    (setq indent-tabs-mode nil)))
+(add-hook 'js-mode-hook 'flycheck-mode)
+(add-to-list 'auto-mode-alist '("\\.jst.dust" . html-mode))
+(add-to-list 'auto-mode-alist '("jshintrc" . json-mode))
+(add-hook 'json-mode-hook 'flycheck-mode)
 
+;; twitter
+(with-eval-after-load 'twittering-mode
+  (setq twittering-use-master-password t))
 
-; (autoload 'ghc-init "ghc" nil t)
-; (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+;; haskell
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'flycheck-mode)
+(add-hook 'haskell-mode-hook
+	  (lambda ()
+	    (ghc-init)))
+(with-eval-after-load 'haskell-mode
+  (custom-set-variables
+   '(haskell-process-suggest-remove-import-lines t)
+   '(haskell-process-auto-import-loaded-modules t)
+   '(haskell-process-log t)
+   '(haskell-process-type 'cabal-repl)
+   ))
 
+(add-hook 'haskell-mode-hook
+	  (lambda ()
+	    (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+	    (define-key haskell-mode-map (kbd "C-`") 'haskell-interactive-bring)
+	    (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
+	    (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
+	    (define-key haskell-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
+	    (define-key haskell-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
+	    (define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
+	    (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
+	    (define-key haskell-mode-map (kbd "M-SPC") 'company-complete)
+	    (company-mode)))
+(add-hook 'company-mode-hook
+	  (lambda ()
+	    (add-to-list 'company-backends 'company-ghc)))
 
-; color-themes sucks
-(if window-system
-    (dotimes (i 3) ;; looks like 1 time isn't enough :<
-      (progn
-	(set-background-color "#ffffff")
-	(set-foreground-color "#141414"))))
+(add-hook 'makefile-mode-hook 'flycheck-mode)
 
-;;(add-to-list 'custom-theme-load-path "~/.emacs.d/site-lisp/emacs-color-theme-solarized")
-;;(load-theme 'solarized-light t)
-
-;(set-default-font "Inconsolata-16")
-(set-default-font "PT Mono-14")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(display-battery-mode t)
  '(fringe-mode (quote (nil . 0)) nil (fringe))
+ '(haskell-ask-also-kill-buffers nil)
+ '(haskell-process-auto-import-loaded-modules t)
+ '(haskell-process-log t)
+ '(haskell-process-suggest-remove-import-lines t)
  '(indicate-buffer-boundaries (quote left))
- '(indicate-empty-lines t)
- '(tool-bar-mode nil))
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(diff-added ((t (:foreground "Green"))))
-;;  '(diff-removed ((t (:foreground "Red"))))
-;;  '(erc-timestamp-face ((t (:foreground "darkgrey" :weight bold))))
-;;  '(font-lock-builtin-face ((t nil)))
-;;  '(font-lock-comment-delimiter-face ((t nil)))
-;;  '(font-lock-comment-face ((t nil)))
-;;  '(font-lock-constant-face ((t nil)))
-;;  '(font-lock-doc-face ((t nil)))
-;;  '(font-lock-function-name-face ((t nil)))
-;;  '(font-lock-keyword-face ((t nil)))
-;;  '(font-lock-preprocessor-face ((t nil)))
-;;  '(font-lock-regexp-grouping-backslash ((t nil)))
-;;  '(font-lock-regexp-grouping-construct ((t nil)))
-;;  '(font-lock-string-face ((t nil)))
-;;  '(font-lock-type-face ((t nil)))
-;;  '(font-lock-variable-name-face ((t nil)))
-;;  '(font-lock-warning-face ((t nil))))
-
-
-
+ '(indicate-empty-lines t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
