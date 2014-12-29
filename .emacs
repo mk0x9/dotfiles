@@ -12,7 +12,7 @@
 ;; visuals
 (add-hook 'after-init-hook
 	  (lambda ()
-	    (load-theme 'solarized-light t)))
+	    (load-theme 'leuven t)))
 (set-default-font "Ubuntu Mono-14" nil t)
 
 ;; set font for japanese characters
@@ -69,9 +69,13 @@
 	    (setq js-indent-level 2)
 	    (setq indent-tabs-mode nil)))
 (add-hook 'js-mode-hook 'flycheck-mode)
-(add-to-list 'auto-mode-alist '("\\.jst.dust" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.dust" . html-mode))
 (add-to-list 'auto-mode-alist '("jshintrc" . json-mode))
 (add-hook 'json-mode-hook 'flycheck-mode)
+(add-hook 'html-mode-hook 'flycheck-mode)
+(add-hook 'html-mode-hook
+	  (lambda ()
+	    (auto-fill-mode -1)))
 
 ;; twitter
 (with-eval-after-load 'twittering-mode
