@@ -33,7 +33,10 @@
 (global-set-key [f7] 'global-whitespace-mode)
 
 ;; other stuff
-(set-auto-saves)
+(if (not (eq system-type 'windows-nt))
+    (progn
+      (set-auto-saves)
+      (display-battery-mode 1)))
 (add-hook 'after-init-hook
 	  (lambda ()
 	    (window-numbering-mode 1)
@@ -52,7 +55,6 @@
 (line-number-mode 1)
 (column-number-mode 1)
 (size-indication-mode 1)
-(display-battery-mode 1)
 (setq default-major-mode 'text-mode)
 (setq-default cursor-type 'bar)
 (set-language-environment "UTF-8")
