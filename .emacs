@@ -70,6 +70,7 @@
 	    (setq indent-tabs-mode nil)))
 (add-hook 'js-mode-hook 'flycheck-mode)
 (add-to-list 'auto-mode-alist '("\\.dust" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl" . html-mode))
 (add-to-list 'auto-mode-alist '("jshintrc" . json-mode))
 (add-hook 'json-mode-hook 'flycheck-mode)
 (add-hook 'html-mode-hook 'flycheck-mode)
