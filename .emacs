@@ -78,6 +78,9 @@
 	  (lambda ()
 	    (auto-fill-mode -1)))
 
+(add-to-list 'auto-mode-alist '("\\.inc" . php-mode))
+(add-hook 'php-mode-hook 'flycheck-mode)
+
 ;; twitter
 (with-eval-after-load 'twittering-mode
   (setq twittering-use-master-password t))
