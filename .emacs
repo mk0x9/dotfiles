@@ -56,7 +56,9 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-(ido-mode t)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
 (setq inhibit-startup-message t)
 (setq inhibit-startup-echo-message t)
 (show-paren-mode 1)
@@ -133,6 +135,6 @@
 (add-hook 'makefile-mode-hook 'flycheck-mode)
 
 (custom-set-variables
- '(fringe-mode (quote (nil . 0)) nil (fringe))
+ '(fringe-mode (quote (6 . 0)) nil (fringe))
  '(indicate-buffer-boundaries (quote left))
  '(indicate-empty-lines t))
