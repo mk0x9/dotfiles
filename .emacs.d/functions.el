@@ -32,3 +32,13 @@
   (interactive)
   (byte-compile-file "~/.emacs.d/functions.el" t)
   (byte-compile-file "~/.emacs.d/packages.el"))
+
+(defmacro with-system (type &rest body)
+  "Evaluate body if `system-type` equals type."
+  `(when (eq system-type ,type)
+     ,@body))
+
+(defmacro with-old-panasonic-laptop (&rest body)
+  "Evaluate body if runs on old Panasonic CF-R4"
+  `(when (string= system-name "\203p\203i\203\\\203j\203b\203N")
+     ,@body))

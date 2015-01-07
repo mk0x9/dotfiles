@@ -13,30 +13,38 @@
 (add-hook 'after-init-hook
 	  (lambda ()
 	    (load-theme 'leuven t)))
-(set-default-font "Ubuntu Mono-13" nil t)
 
-;; set font for japanese characters
-(dolist (range '((#x3000 . #x303f) (#x3040 . #x309f) (#x30a0 . #x30ff)
-		 (#xff00 . #xffef) (#x4e00 . #x9faf) (#x3400 . #x4dbf)))
-  (set-fontset-font "fontset-default" range "Meiryo-12"))
+(let ((font-name "Ubuntu Mono-13"))
+  (with-old-panasonic-laptop
+   (setq font-name "Consolas-10"))
+  (set-default-font font-name nil t))
+
+;; set font for japanese characters 私はマイクです。
+(let ((japanese-font-name "Meiryo-12"))
+  (with-old-panasonic-laptop
+   (setq japanese-font-name "Meiryo-8"))
+  (dolist (range '((#x3000 . #x303f) (#x3040 . #x309f) (#x30a0 . #x30ff)
+		   (#xff00 . #xffef) (#x4e00 . #x9faf) (#x3400 . #x4dbf)))
+    (set-fontset-font "fontset-default" range japanese-font-name)))
 
 ;; hooks
 (add-hook 'minibuffer-setup-hook 'conditionally-enable-paredit-mode)
 (add-hook 'text-mode-hook 'auto-fill-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+(add-hook 'emacs-lisp-mode-hook 'company-mode)
 
 ;; hotkeys
 (global-set-key (kbd "C-l") 'goto-line)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-c M-x") 'execute-extended-command)
+(global-set-key (kbd "C-M-SPC") 'company-complete)
 (global-set-key [f7] 'global-whitespace-mode)
 
 ;; other stuff
-(if (not (eq system-type 'windows-nt))
-    (progn
-      (set-auto-saves)
-      (display-battery-mode 1)))
+(with-system 'gnu/linux
+	     (set-auto-saves)
+	     (display-battery-mode))
 (add-hook 'after-init-hook
 	  (lambda ()
 	    (window-numbering-mode 1)
@@ -83,7 +91,10 @@
 
 ;; twitter
 (with-eval-after-load 'twittering-mode
-  (setq twittering-use-master-password t))
+  (setq twittering-use-master-password t)
+  (setq twittering-convert-fix-size 24)
+  (setq twittering-use-icon-storage t)
+  (setq twittering-convert-program (executable-find "gm")))
 
 ;; haskell
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
@@ -101,9 +112,6 @@
    '(haskell-process-type 'cabal-repl)
    '(haskell-interactive-popup-errors nil)
    '(haskell-ask-also-kill-buffers nil)
-   '(fringe-mode (quote (nil . 0)) nil (fringe))
-   '(indicate-buffer-boundaries (quote left))
-   '(indicate-empty-lines t)
    ))
 
 (add-hook 'haskell-mode-hook
@@ -116,10 +124,15 @@
 	    (define-key haskell-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
 	    (define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
 	    (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
-	    (define-key haskell-mode-map (kbd "C-M-SPC") 'company-complete)
 	    (company-mode)))
+
 (add-hook 'company-mode-hook
 	  (lambda ()
 	    (add-to-list 'company-backends 'company-ghc)))
 
 (add-hook 'makefile-mode-hook 'flycheck-mode)
+
+(custom-set-variables
+ '(fringe-mode (quote (nil . 0)) nil (fringe))
+ '(indicate-buffer-boundaries (quote left))
+ '(indicate-empty-lines t))
