@@ -74,11 +74,12 @@
 (setq default-buffer-file-coding-system 'utf-8-unix)
 
 ;; web
-(add-hook 'js-mode-hook
+(add-to-list 'auto-mode-alist '("\\.js" . js2-mode))
+(add-hook 'js2-mode-hook 'flycheck-mode)
+(js2r-add-keybindings-with-prefix "C-c C-m")
+(add-hook 'js2-mode-hook
 	  (lambda ()
-	    (setq js-indent-level 2)
-	    (setq indent-tabs-mode nil)))
-(add-hook 'js-mode-hook 'flycheck-mode)
+	    (setq js2-basic-offset 2)))
 (add-to-list 'auto-mode-alist '("\\.dust" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl" . html-mode))
 (add-to-list 'auto-mode-alist '("jshintrc" . json-mode))
