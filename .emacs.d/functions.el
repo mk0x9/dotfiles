@@ -42,3 +42,8 @@
   "Evaluate body if runs on old Panasonic CF-R4"
   `(when (string= system-name "\203p\203i\203\\\203j\203b\203N")
      ,@body))
+
+(defmacro with-work-desktop (&rest body)
+  "Evaluate body if runs on my workstation"
+  `(when (string= system-name "HAKODATE")
+     ,@body))

@@ -17,6 +17,8 @@
 (let ((font-name "Ubuntu Mono-13"))
   (with-old-panasonic-laptop
    (setq font-name "Consolas-10"))
+  (with-work-desktop
+   (setq font-name "Consolas-11"))
   (set-default-font font-name nil t))
 
 ;; set font for japanese characters 私はマイクです。
