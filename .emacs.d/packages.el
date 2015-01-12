@@ -2,7 +2,7 @@
   (require 'cl-lib))
 
 (defvar my-packages
-  '(window-numbering leuven-theme flycheck paredit smex twittering-mode haskell-mode json-mode company-ghc php-mode magit js2-mode js2-refactor)
+  '(window-numbering leuven-theme flycheck paredit smex twittering-mode haskell-mode json-mode company-ghc php-mode magit js2-mode js2-refactor scss-mode)
   "A list of packages to ensure are installed at launch.")
 
 (defun my-packages-installed-p ()
