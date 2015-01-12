@@ -79,6 +79,7 @@
 (js2r-add-keybindings-with-prefix "C-c C-m")
 (add-hook 'js2-mode-hook
 	  (lambda ()
+	    (setq indent-tabs-mode nil)
 	    (setq js2-basic-offset 2)))
 (add-to-list 'auto-mode-alist '("\\.dust" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl" . html-mode))
