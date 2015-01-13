@@ -81,7 +81,7 @@
 (indent-guide-mode 1)
 (indent-guide-mode -1)
 (set-face-attribute 'indent-guide-face nil
-		    :foreground "#c0c0c0")
+		    :foreground "#ccc")
 
 ;; web
 (add-to-list 'auto-mode-alist '("\\.js" . js2-mode))
