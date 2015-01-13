@@ -35,6 +35,8 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+				  (indent-guide-mode)))
 
 ;; hotkeys
 (global-set-key (kbd "C-l") 'goto-line)
@@ -75,6 +77,12 @@
 (prefer-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8-unix)
 
+;; indent-guide
+(indent-guide-mode 1)
+(indent-guide-mode -1)
+(set-face-attribute 'indent-guide-face nil
+		    :foreground "#c0c0c0")
+
 ;; web
 (add-to-list 'auto-mode-alist '("\\.js" . js2-mode))
 (add-hook 'js2-mode-hook 'flycheck-mode)
@@ -82,7 +90,8 @@
 (add-hook 'js2-mode-hook
 	  (lambda ()
 	    (setq indent-tabs-mode nil)
-	    (setq js2-basic-offset 2)))
+	    (setq js2-basic-offset 2)
+	    (indent-guide-mode)))
 (add-to-list 'auto-mode-alist '("\\.dust" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl" . html-mode))
 (add-to-list 'auto-mode-alist '("jshintrc" . json-mode))
@@ -90,7 +99,11 @@
 (add-hook 'html-mode-hook 'flycheck-mode)
 (add-hook 'html-mode-hook
 	  (lambda ()
-	    (auto-fill-mode -1)))
+	    (auto-fill-mode -1)
+	    (indent-guide-mode)))
+(add-hook 'scss-mode-hook
+	  (lambda ()
+	    (indent-guide-mode)))
 
 (add-to-list 'auto-mode-alist '("\\.inc" . php-mode))
 (add-hook 'php-mode-hook 'flycheck-mode)
