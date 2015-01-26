@@ -15,6 +15,7 @@
 (load "~/emacs/conf/autocomplete")
 (load "~/emacs/conf/html")
 (load "~/emacs/conf/text")
+(load "~/emacs/conf/tramp")
 
 (defun mk9/get-short-hostname ()
   (let ((idx (string-match "\\." system-name)))

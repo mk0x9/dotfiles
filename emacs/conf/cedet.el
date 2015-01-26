@@ -49,8 +49,8 @@
 (ede-enable-generic-projects)
 
 (add-to-list 'auto-mode-alist '("/usr/include" . c++-mode))
-(ede-cpp-root-project "qt-cedet"
-		      :file "~/code/qt-cedet/main.cc"
-		      :spp-files '("/usr/include/Qt/qconfig.h"
-				   "/usr/include/Qt/qconfig-dist.h"
-				   "/usr/include/Qt/qglobal.h"))
+;; (ede-cpp-root-project "qt-cedet"
+;; 		      :file "~/code/qt-cedet/main.cc"
+;; 		      :spp-files '("/usr/include/Qt/qconfig.h"
+;; 				   "/usr/include/Qt/qconfig-dist.h"
+;; 				   "/usr/include/Qt/qglobal.h"))
