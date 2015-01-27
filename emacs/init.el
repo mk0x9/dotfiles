@@ -18,6 +18,8 @@
 (load "~/emacs/conf/tramp")
 (load "~/emacs/conf/elisp")
 
+(load "~/emacs/conf/javascript-rirsrv")
+
 (defun mk9/get-short-hostname ()
   (let ((idx (string-match "\\." system-name)))
     (if idx
