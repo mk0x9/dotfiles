@@ -3,10 +3,15 @@
 (setq gnus-select-method '(nnimap "localhost"
 				  (nnimap-stream network)))
 
-;(defun mk9/gnus-hook ()
-;  (menu-bar-mode 1))
-
-;(add-hook 'gnus-startup-hook 'mk9/gnus-hook)
-
 (setq message-send-mail-function 'message-send-mail-with-sendmail)
 (setq sendmail-program "msmtp")
+
+(defun mk9/my-citation-line ()
+  (when message-reply-headers
+    (insert
+     (or (car (gnus-extract-address-components
+	       (mail-header-from message-reply-headers)))
+	 "Somebody")
+     " writes:\n")))
+
+(setq message-citation-line-function 'mk9/my-citation-line)

@@ -7,13 +7,15 @@
 (add-to-list 'semantic-default-submodes 'global-semantic-idle-scheduler-mode)
 (add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode)
 (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)
+(add-to-list 'semantic-default-submodes 'global-decoration-on-includes)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode)
 
 (semantic-mode 1)
 
-(require 'semantic/bovine/c)
 (require 'semantic/bovine/gcc)
-;(require 'cedet-files)
-;(require 'eassist)
+(setq semantic-gcc-get-preprocessor-macros t)
+(require 'cedet-files)
+(require 'eassist)
 
 (defun mk9/cedet-hook ()
   (local-set-key [(control return)] 'semantic-ia-complete-symbol-menu)
@@ -32,7 +34,8 @@
   (local-set-key "\C-ct" 'eassist-switch-h-cpp)
   (local-set-key "\C-xt" 'eassist-switch-h-cpp)
   (local-set-key "\C-ce" 'eassist-list-methods)
-  (local-set-key "\C-c\C-r" 'semantic-symref))
+  (local-set-key "\C-c\C-r" 'semantic-symref)
+  (add-to-list 'ac-sources 'ac-source-semantic))
 
 (add-hook 'c-mode-common-hook 'mk9/c-mode-cedet-hook)
 
@@ -48,9 +51,9 @@
 (global-ede-mode 1)
 (ede-enable-generic-projects)
 
-(add-to-list 'auto-mode-alist '("/usr/include" . c++-mode))
-;; (ede-cpp-root-project "qt-cedet"
-;; 		      :file "~/code/qt-cedet/main.cc"
-;; 		      :spp-files '("/usr/include/Qt/qconfig.h"
-;; 				   "/usr/include/Qt/qconfig-dist.h"
-;; 				   "/usr/include/Qt/qglobal.h"))
+(dolist (range '("" "3Support" "Core" "DBus" "Declarative" "Designer" "Gui"
+		 "Help" "Multimedia" "Network" "OpenGL" "Script" "ScriptTools"
+		 "Sql" "Svg" "Test" "UiTools" "Xml" "XmlPatterns"))
+  (let ((qt-path (concat "/usr/include/Qt" range)))
+    (semantic-add-system-include qt-path 'c++-mode)
+    (add-to-list 'auto-mode-alist `(,qt-path . c++-mode))))
