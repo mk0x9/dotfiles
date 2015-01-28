@@ -2,6 +2,7 @@
   `(concat (file-name-as-directory "~/code/emacs-extensions") ,@args))
 
 (load "~/emacs/conf/cedet")
+(load "~/emacs/conf/ecb")
 (load "~/emacs/conf/el-get")
 (load "~/emacs/conf/common")
 (load "~/emacs/conf/visual")
