@@ -4,5 +4,5 @@
 (setq el-get-my-packages '(magit window-numbering smex js2-mode indent-guide
 				 json-mode twittering-mode mac-classic-theme
 				 json-mode auto-complete php-mode scss-mode
-				 paredit vala-mode tern))
+				 paredit vala-mode tern markdown-mode))
 (el-get 'sync el-get-my-packages)

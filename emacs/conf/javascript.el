@@ -11,4 +11,10 @@
      (require 'tern-auto-complete)
      (tern-ac-setup)))
 
+(defun mk9/json-hook ()
+  (setq indent-tabs-mode nil)
+  (setq js-indent-level 2)
+  (setq json-reformat:indent-width 2))
+
 (add-hook 'js2-mode-hook 'mk9/js2-hook)
+(add-hook 'json-mode-hook 'mk9/json-hook)
