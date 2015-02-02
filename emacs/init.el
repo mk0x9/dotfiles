@@ -19,6 +19,7 @@
 (load "~/emacs/conf/tramp")
 (load "~/emacs/conf/elisp")
 (load "~/emacs/conf/css")
+(load "~/emacs/conf/auto-save")
 
 (load "~/emacs/conf/javascript-rirsrv")
 
