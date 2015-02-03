@@ -24,7 +24,7 @@
 (defun mk9/js2-rirsrv-hook ()
   (mk9/js2-set-additional-externs "^.*/rirsrv/*.\\.js$" '("define" "setTimeout" "clearTimeout"))
   (mk9/js2-set-additional-externs "^.*gulpfile\\.js$" '("require"))
-  (mk9/js2-set-additional-externs "^.*-unit\\.js$" '("describe" "it")))
+  (mk9/js2-set-additional-externs "^.*-unit\\.js$" '("describe" "it" "sinon" "beforeEach" "afterEach")))
 
 (add-hook 'js2-init-hook 'mk9/js2-rirsrv-hook)
 (add-hook 'js2-mode-hook 'mk9/js2-hook)
