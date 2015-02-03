@@ -21,8 +21,6 @@
 (load "~/emacs/conf/css")
 (load "~/emacs/conf/auto-save")
 
-(load "~/emacs/conf/javascript-rirsrv")
-
 (defun mk9/get-short-hostname ()
   (let ((idx (string-match "\\." system-name)))
     (if idx
