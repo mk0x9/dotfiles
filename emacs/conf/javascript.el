@@ -4,12 +4,13 @@
 (defun mk9/js2-hook ()
   (setq indent-tabs-mode nil)
   (setq js2-basic-offset 2)
-  (tern-mode t))
+  ;(tern-mode t)
+  )
 
-(eval-after-load 'tern
-  '(progn
-     (require 'tern-auto-complete)
-     (tern-ac-setup)))
+;; (eval-after-load 'tern
+;;   '(progn
+;;      (require 'tern-auto-complete)
+;;      (tern-ac-setup)))
 
 (defun mk9/json-hook ()
   (setq indent-tabs-mode nil)
@@ -27,7 +28,7 @@
   (setq mk9/js2-is-test-file nil)
   (mk9/js2-set-additional-externs "^.*/rirsrv/*.\\.js$" '("define" "setTimeout" "clearTimeout"))
   (mk9/js2-set-additional-externs "^.*gulpfile\\.js$" '("require"))
-  (mk9/js2-set-additional-externs "^.*-unit\\.js$" '("describe" "it" "sinon" "beforeEach" "afterEach") (setq mk9/js2-is-test-file t)))
+  (mk9/js2-set-additional-externs "^.*-unit\\.js$" '("describe" "it" "sinon" "Should" "beforeEach" "afterEach") (setq mk9/js2-is-test-file t)))
 
 (defadvice js2-node-has-side-effects (around js2-node-has-side-effects-around)
   "Disable check for code side effects if 'mk9/js2-is-test-file is set."
