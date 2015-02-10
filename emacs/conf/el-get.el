@@ -5,5 +5,5 @@
 				 json-mode twittering-mode mac-classic-theme
 				 json-mode auto-complete php-mode scss-mode
 				 paredit vala-mode tern markdown-mode go-mode
-				 go-autocomplete))
+				 go-autocomplete flycheck))
 (el-get 'sync el-get-my-packages)
