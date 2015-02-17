@@ -6,5 +6,7 @@
 				 json-mode twittering-mode gruber-darker-theme
 				 json-mode auto-complete php-mode scss-mode
 				 paredit vala-mode tern markdown-mode go-mode
-				 company-go flycheck))
+					;company-go flycheck
+				 go-autocomplete flycheck
+				 ))
 (el-get 'sync el-get-my-packages)

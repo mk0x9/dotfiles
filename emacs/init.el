@@ -14,7 +14,7 @@
 (load "~/emacs/conf/twittering-mode")
 (load "~/emacs/conf/gnus")
 (load "~/emacs/conf/autocomplete")
-(load "~/emacs/conf/company")
+;(load "~/emacs/conf/company")
 (load "~/emacs/conf/html")
 (load "~/emacs/conf/text")
 (load "~/emacs/conf/tramp")
