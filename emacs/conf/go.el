@@ -10,7 +10,8 @@
   ;(setq company-echo-delay 0)
   ;(setq company-begin-commands '(self-insert-command))
   ;(auto-complete-mode -1)
-  ;(company-mode 1)
+					;(company-mode 1)
+  (setq ac-sources '(ac-source-go))
   )
 
 (add-hook 'go-mode-hook 'mk9/go-hook)
