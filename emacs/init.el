@@ -35,13 +35,3 @@
 (load "~/emacs/conf/go")
 
 (mk9/load-local-config "post")
-
-;; (defun mk9/get-short-hostname ()
-;;   (let ((idx (string-match "\\." system-name)))
-;;     (if idx
-;; 	(substring system-name 0 idx)
-;;       system-name)))
-
-;; (let ((fname (concat "~/emacs/conf/local-" (mk9/get-short-hostname) ".el")))
-;;   (when (file-exists-p fname)
-;;     (load fname)))
