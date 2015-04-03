@@ -7,6 +7,6 @@
 				 jazz-theme mac-classic-theme
 				 json-mode auto-complete php-mode scss-mode
 				 paredit vala-mode tern markdown-mode go-mode
-				 go-autocomplete flycheck
+				 go-autocomplete flycheck magit-svn
 				 ))
 (el-get 'sync el-get-my-packages)
