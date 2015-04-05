@@ -5,6 +5,12 @@
     (find-alternate-file (concat "/sudo::" (buffer-file-name)))
     (goto-char point)))
 
+(setq inhibit-default-init t)
+(setq frame-title-format
+  '("" invocation-name ": "(:eval (if (buffer-file-name)
+                (abbreviate-file-name (buffer-file-name))
+                  "%b"))))
+
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (global-set-key (kbd "C-l") 'goto-line)
