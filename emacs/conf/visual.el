@@ -1,5 +1,23 @@
 (tool-bar-mode -1)
 
+(defun mk9/gtk-dark-variant (frame)
+  "Enable dark gtk+ theme for current frame"
+  (call-process "xprop" nil t nil
+   		"-f" "_GTK_THEME_VARIANT" "8u"
+   		"-set" "_GTK_THEME_VARIANT" "dark"
+   		"-name" (if (framep frame)
+			    (frame-parameter frame 'name)
+			  (cdr (assoc 'name (frame-parameters))))))
+
+(defun mk9/new-frame-hook (frame)
+  (if (and (eq system-type 'gnu/linux)
+	   (eq window-system 'x)
+	   (not (boundp 'mk9/light-theme)))
+      (mk9/gtk-dark-variant frame)))
+
+(add-hook 'after-make-frame-functions 'mk9/new-frame-hook)
+(mk9/new-frame-hook nil)
+
 (when window-system
   (set-default-font
    (if (boundp 'mk9/font)

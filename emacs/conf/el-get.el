@@ -8,6 +8,6 @@
 				 json-mode auto-complete php-mode scss-mode
 				 paredit vala-mode tern markdown-mode go-mode
 				 go-autocomplete flycheck magit-svn
-				 yasnippet protobuf-mode
+				 yasnippet protobuf-mode gh go-test
 				 ))
 (el-get 'sync el-get-my-packages)

@@ -1,4 +1,4 @@
-(setq user-mail-address "tensai@cirno.in")
+(setq user-mail-address "me@mk9.name")
 (setq user-full-name "Michael Kuryshev")
 (setq gnus-select-method '(nnimap "localhost"
 				  (nnimap-stream network)))

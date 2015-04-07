@@ -33,5 +33,6 @@
 (load "~/emacs/conf/css")
 (load "~/emacs/conf/auto-save")
 (load "~/emacs/conf/go")
+(load "~/emacs/conf/spell")
 
 (mk9/load-local-config "post")
