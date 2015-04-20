@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if [ "$1" == "pre" ]; then
+	/usr/bin/loginctl lock-sessions
+fi

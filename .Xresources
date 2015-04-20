@@ -29,8 +29,10 @@ URxvt*foreground:                      grey75
 URxvt*saveLines:                       7777
 URxvt*cursorBlink:                     false
 URxvt*termName:                        rxvt-256color
-URxvt*font:                            xft:Monaco:pixelsize=16
-URxvt*boldFont:                        xft:Monaco:bold:pixelsize=16
+!URxvt*font:                            xft:Monaco:pixelsize=16
+!URxvt*boldFont:                        xft:Monaco:bold:pixelsize=16
+URxvt*font: -*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*
+URxvt*boldFont: -*-fixed-bold-r-*-*-13-*-*-*-*-*-*-*
 URxvt*colorBD:                         orange
 !URxvt*transparent:                    true
 !URxvt*shading:                        33
