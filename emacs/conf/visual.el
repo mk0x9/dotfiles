@@ -44,3 +44,11 @@
 (add-hook 'server-switch-hook 'mk9/emacsclient-hook)
 
 (global-set-key [f10] 'menu-bar-mode)
+
+(defun mk9/mac-os-fullscreen ()
+  (interactive)
+  (set-frame-parameter nil 'fullscreen (when
+					   (not (frame-parameter nil 'fullscreen))
+					 'fullboth)))
+
+; https://github.com/railwaycat/emacs-mac-port/issues/28

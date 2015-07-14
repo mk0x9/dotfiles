@@ -9,5 +9,5 @@
 				 paredit vala-mode tern markdown-mode go-mode
 				 go-autocomplete flycheck magit-svn
 				 yasnippet protobuf-mode gh go-test
-				 ))
+				 rust-mode company-mode haskell-mode))
 (el-get 'sync el-get-my-packages)

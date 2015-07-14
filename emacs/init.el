@@ -12,8 +12,8 @@
 
 (mk9/load-local-config "pre")
 
-(load "~/emacs/conf/cedet")
-(load "~/emacs/conf/ecb")
+; (load "~/emacs/conf/cedet")
+; (load "~/emacs/conf/ecb")
 (load "~/emacs/conf/el-get")
 (load "~/emacs/conf/common")
 (load "~/emacs/conf/visual")
@@ -25,7 +25,7 @@
 (load "~/emacs/conf/twittering-mode")
 (load "~/emacs/conf/gnus")
 (load "~/emacs/conf/autocomplete")
-;(load "~/emacs/conf/company")
+(load "~/emacs/conf/company")
 (load "~/emacs/conf/html")
 (load "~/emacs/conf/text")
 (load "~/emacs/conf/tramp")
@@ -34,5 +34,6 @@
 (load "~/emacs/conf/auto-save")
 (load "~/emacs/conf/go")
 (load "~/emacs/conf/spell")
+(load "~/emacs/conf/rust")
 
 (mk9/load-local-config "post")
