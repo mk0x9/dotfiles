@@ -10,5 +10,5 @@
 				 go-autocomplete ;flycheck magit-svn
 				 yasnippet protobuf-mode gh go-test
 				 rust-mode company-mode haskell-mode
-				 web-mode))
+				 web-mode emmet-mode))
 (el-get 'sync el-get-my-packages)
