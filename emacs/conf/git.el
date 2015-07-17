@@ -8,3 +8,5 @@
 ;;       (magit-svn-mode)))
 
 ;(add-hook 'magit-mode-hook 'mk9/magit-hook)
+
+(global-set-key [f9] 'magit-status)

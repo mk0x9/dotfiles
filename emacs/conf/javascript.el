@@ -38,7 +38,8 @@
   (mk9/js2-set-additional-externs "^.*phone-input.*$" '("goog" "i18n"))
   (mk9/js2-set-additional-externs "^.*tracegl.*$" '("define") (setq js2-strict-missing-semi-warning nil))
   (mk9/js2-set-additional-externs "^.*ohoto.*$" '("angular"))
-  (mk9/js2-set-additional-externs "^.*gulpfile\\.js$" '("require")))
+  (mk9/js2-set-additional-externs "^.*gulpfile\\.js$" '("require"))
+  (mk9/js2-set-additional-externs "^.*avito.*$" '() (setq js2-basic-offset 4)))
 
 (defun mk9/js2-buffer-settings ()
   (make-local-variable 'mk9/js2-is-test-file)

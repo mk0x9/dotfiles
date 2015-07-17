@@ -36,10 +36,13 @@
 (mk9/new-frame-hook nil)
 
 (defun mk9/emacsclient-hook ()
-  (let ((win-id (frame-parameter (selected-frame) 'outer-window-id)))
-    (call-process "wmctrl" nil nil nil "-i" "-r" win-id "-e" "0,100,100,-1,-1")
-    (call-process "wmctrl" nil nil nil "-i" "-R" win-id)
-    (mk9/gtk-dark-variant (selected-frame))))
+  (if (and (eq system-type 'gnu/linux)
+	   (eq window-system 'x)
+	   (not (boundp 'mk9/light-theme)))
+      (let ((win-id (frame-parameter (selected-frame) 'outer-window-id)))
+	(call-process "wmctrl" nil nil nil "-i" "-r" win-id "-e" "0,100,100,-1,-1")
+	(call-process "wmctrl" nil nil nil "-i" "-R" win-id)
+	(mk9/gtk-dark-variant (selected-frame)))))
 
 (add-hook 'server-switch-hook 'mk9/emacsclient-hook)
 
@@ -52,3 +55,8 @@
 					 'fullboth)))
 
 ; https://github.com/railwaycat/emacs-mac-port/issues/28
+
+(if (and
+     (eq system-type 'darwin)
+     (eq window-system 'mac))
+    (global-set-key [f12] 'mk9/mac-os-fullscreen))
