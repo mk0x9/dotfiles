@@ -3,7 +3,7 @@
 (setq mac-option-modifier 'meta)
 
 (setenv "PATH"
-	(concat "/Users/mk9/.nix-profile/bin:/Users/mk9/.nix-profile/sbin:" (getenv "PATH")))
+	(concat "/Users/mk9/.nix-profile/bin:/Users/mk9/.nix-profile/sbin:" (getenv "PATH") ":/Users/mk9/code/go/bin:/Users/mk9/code/workspace-go/bin"))
 
 (setq exec-path (nconc
 		 (split-string (getenv "PATH") ":")
