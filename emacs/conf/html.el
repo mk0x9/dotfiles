@@ -20,6 +20,7 @@
   (setq web-mode-css-indent-offset 4)
   (setq web-mode-comment-style 2) ; server comment instead of html
   (setq web-mode-enable-css-colorization t)
+  (setq indent-tabs-mode nil)
   (emmet-mode))
 
 (add-hook 'web-mode-hook 'mk9/web-mode-hook)
