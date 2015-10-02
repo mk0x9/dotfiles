@@ -1,4 +1,4 @@
-(setq mk9/font "Consolas-15")
+(setq mk9/font "Fira Mono-14")
 (setq mk9/font-jp "Meiryo-13")
 (setq mac-option-modifier 'meta)
 

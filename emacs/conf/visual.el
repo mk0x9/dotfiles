@@ -29,7 +29,8 @@
 			"Meiryo-12"))))
 
 (defun mk9/set-theme ()
-  (load-theme (if (boundp 'mk9/theme) mk9/theme 'mac-classic) t))
+  ;(load-theme (if (boundp 'mk9/theme) mk9/theme 'mac-classic) t)
+  )
 (mk9/set-theme)
 
 (add-hook 'after-make-frame-functions 'mk9/new-frame-hook)

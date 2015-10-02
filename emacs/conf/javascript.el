@@ -5,7 +5,17 @@
   (setq indent-tabs-mode nil)
   (setq js2-basic-offset 4)
   (setq js2-indent-switch-body t)
-  (flycheck-mode))
+  ;(flycheck-mode)
+  (tern-mode t)
+  (setq ac-sources
+	(append '(ac-source-tern-completion) ac-sources))
+  (slime-js-minor-mode 1))
+
+(eval-after-load 'tern
+  '(progn
+     (require 'tern-auto-complete)
+     (tern-ac-setup)
+     (setq tern-ac-on-dot nil)))
 
 (defun mk9/json-hook ()
   (setq indent-tabs-mode nil)
@@ -40,8 +50,13 @@
   (mk9/js2-set-additional-externs "^.*phone-input.*$" '("goog" "i18n"))
   (mk9/js2-set-additional-externs "^.*tracegl.*$" '("define") (setq js2-strict-missing-semi-warning nil))
   (mk9/js2-set-additional-externs "^.*ohoto.*$" '("angular"))
-  (mk9/js2-set-additional-externs "^.*gulpfile\\.js$" '("require"))
-  (mk9/js2-set-additional-externs "^.*avito.*$" '() (setq js2-basic-offset 4)))
+  (mk9/js2-set-additional-externs "^.*gulpfile.*js$" '("require" "__dirname"))
+  (mk9/js2-set-additional-externs "^.*avito.*$" '("avito" "doT" "$") (setq js2-basic-offset 4))
+  (mk9/js2-set-additional-externs "^.*socket-client.*$" '("require" "module" "SocketClient" "require" "localStorage setTimeout") (setq js2-basic-offset 4))
+  (mk9/js2-set-additional-externs "^.*socket-messenger.*$" '("require" "module" "SocketClient" "require" "localStorage setTimeout") (setq js2-basic-offset 4))
+  (mk9/js2-set-additional-externs "^.*test.*spec.*js$" '("describe" "it" "afterEach" "beforeEach" "jasmine" "expect" "require" "fail"))
+  (mk9/js2-set-additional-externs "^.*integer-sequence.*$" '("require" "module" "it" "assertEqual" "beforeEach" "afterEach"))
+  (mk9/js2-set-additional-externs "^.*tab-sync.*$" '("require" "module" "it" "localStorage" "it" "describe" "beforeEach" "afterEach" "expect" "jasmine" "setTimeout") (setq js2-basic-offset 2)))
 
 (defun mk9/js2-buffer-settings ()
   (make-local-variable 'mk9/js2-is-test-file)
@@ -55,6 +70,8 @@
       (setq ad-return-value t)
     ad-do-it))
 (ad-activate 'js2-node-has-side-effects)
+
+(global-set-key [f5] 'slime-js-reload)
 
 (add-hook 'js2-init-hook 'mk9/js2-rirsrv-hook)
 ;(add-hook 'js2-init-hook 'mk9/js2-buffer-settings)
