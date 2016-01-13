@@ -1,3 +1,5 @@
+(require 'color-theme-sanityinc-tomorrow)
+
 (tool-bar-mode -1)
 
 (defun mk9/gtk-dark-variant (frame)
@@ -29,6 +31,8 @@
 			"Meiryo-12"))))
 
 (defun mk9/set-theme ()
+  (if (boundp 'mk9/theme)
+      (load-theme mk9/theme t))
   ;(load-theme (if (boundp 'mk9/theme) mk9/theme 'mac-classic) t)
   )
 (mk9/set-theme)

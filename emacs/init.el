@@ -22,6 +22,7 @@
 (load "~/emacs/conf/indent-guide")
 (load "~/emacs/conf/window-numbering")
 (load "~/emacs/conf/javascript")
+(load "~/emacs/conf/json")
 (load "~/emacs/conf/twittering-mode")
 (load "~/emacs/conf/gnus")
 (load "~/emacs/conf/autocomplete")
@@ -35,5 +36,8 @@
 (load "~/emacs/conf/go")
 (load "~/emacs/conf/spell")
 (load "~/emacs/conf/rust")
+(load "~/emacs/conf/projectile")
+(load "~/emacs/conf/edit-with-emacs")
+; (load "~/emacs/conf/waka")
 
 (mk9/load-local-config "post")
