@@ -1,4 +1,4 @@
-(setq mk9/font "Consolas-14")
+(setq mk9/font "Consolas-13")
 (setq mk9/font-jp "Meiryo-13")
 					;(setq mk9/theme 'sanityinc-tomorrow-night)
 ;(setq mk9/theme 'mac-classic)

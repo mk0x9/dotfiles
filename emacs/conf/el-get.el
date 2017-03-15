@@ -16,16 +16,23 @@
 				 paredit vala-mode tern
 ;markdown-mode
 go-mode
-				 go-autocomplete flycheck
+					go-autocomplete
+flycheck
 				 yasnippet protobuf-mode gh go-test
-				 rust-mode company-mode haskell-mode
+				 rust-mode company-mode ; haskell-mode
 				 web-mode emmet-mode sx elisp-slime-nav
 				 nix-mode jade-mode yaml-mode
 				 tern swank-js slime
-				 auctex
+				 color-theme-leuven
+				 ; auctex
 				 projectile flx
 				 leuven-theme
 				 color-theme-sanityinc-tomorrow
 				 edit-server
-				 elm-mode))
+				 elm-mode
+				 ensime
+				 cider
+				 go-errcheck
+				 sr-speedbar
+				 rjsx-mode))
 (el-get 'sync el-get-my-packages)
