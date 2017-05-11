@@ -3,8 +3,9 @@
 
 (defun mk9/js2-hook ()
   (setq indent-tabs-mode nil)
-  (setq js2-basic-offset 2)
+  (setq js2-basic-offset 4)
   (setq js2-indent-switch-body t)
+  (set (make-local-variable 'sgml-basic-offset) 4)
   (flycheck-mode)
   (tern-mode t)
   (setq ac-sources
