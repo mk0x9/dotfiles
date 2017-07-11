@@ -10,6 +10,7 @@
   (tern-mode t)
   (setq ac-sources
 	(append '(ac-source-tern-completion) ac-sources))
+  (auto-complete-mode 1)
   ;(slime-js-minor-mode 1)
   )
 

@@ -1,5 +1,6 @@
-(setq mk9/font "Consolas-14")
-(setq mk9/font-jp "Consolas-14")
+(setq mk9/font "Ubuntu Mono-15")
+(setq mk9/font-jp "Meiryo-14")
 ;(setq mk9/theme 'leuven)
 					;(setq mk9/theme 'jazz)
+;(setq mk9/theme 'jazz)
 (setq mk9/theme 'mac-classic)
