@@ -38,6 +38,7 @@
 (load "~/emacs/conf/rust")
 (load "~/emacs/conf/projectile")
 (load "~/emacs/conf/edit-with-emacs")
-; (load "~/emacs/conf/waka")
+					; (load "~/emacs/conf/waka")
+(load "~/emacs/conf/ocaml")
 
 (mk9/load-local-config "post")

@@ -14,14 +14,15 @@
 				 jazz-theme mac-classic-theme
 				 json-mode auto-complete php-mode scss-mode
 				 paredit vala-mode tern
-;markdown-mode
-go-mode
-					go-autocomplete
-flycheck
+				 ; markdown-mode
+				 go-mode
+				 go-autocomplete
+				 flycheck
 				 yasnippet protobuf-mode gh go-test
 				 rust-mode company-mode ; haskell-mode
 				 web-mode emmet-mode sx elisp-slime-nav
-				 nix-mode jade-mode yaml-mode
+				 ; nix-mode
+				 jade-mode yaml-mode
 				 tern swank-js slime
 				 color-theme-leuven
 				 ; auctex
@@ -32,7 +33,9 @@ flycheck
 				 elm-mode
 				 ensime
 				 cider
-				 go-errcheck
+				 ; go-errcheck
 				 sr-speedbar
-				 rjsx-mode))
+				 rjsx-mode
+				 ocp-indent))
+
 (el-get 'sync el-get-my-packages)
