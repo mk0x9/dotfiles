@@ -77,3 +77,4 @@
 (add-hook 'js2-init-hook 'mk9/js2-rirsrv-hook)
 ;(add-hook 'js2-init-hook 'mk9/js2-buffer-settings)
 (add-hook 'js2-mode-hook 'mk9/js2-hook)
+(add-hook 'js2-mode-hook 'prettier-js-mode)
