@@ -33,9 +33,10 @@
 				 elm-mode
 				 ensime
 				 cider
-				 ; go-errcheck
+				 go-errcheck
 				 sr-speedbar
 				 rjsx-mode
+				 prettier-js
 				 ocp-indent))
 
 (el-get 'sync el-get-my-packages)

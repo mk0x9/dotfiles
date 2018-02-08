@@ -7,6 +7,11 @@
 					; (electric-indent-mode 0)
 	    ;; (when (functionp 'flyspell-prog-mode)
 	    ;;   (flyspell-prog-mode))))
+	    ; (when (functionp 'prettify-symbols-mode)
+	    ;   (prettify-symbols-mode))
+	    ; (electric-indent-mode 0)
+	    ; (when (functionp 'flyspell-prog-mode)
+	    ;   (flyspell-prog-mode))
 	    ))
 
 ;(define-key tuareg-mode-map [(f12)] 'next-error)
