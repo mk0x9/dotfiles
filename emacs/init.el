@@ -22,6 +22,7 @@
 (load "~/emacs/conf/indent-guide")
 (load "~/emacs/conf/window-numbering")
 (load "~/emacs/conf/javascript")
+(load "~/emacs/conf/typescript")
 (load "~/emacs/conf/json")
 (load "~/emacs/conf/twittering-mode")
 (load "~/emacs/conf/gnus")
@@ -40,5 +41,7 @@
 (load "~/emacs/conf/edit-with-emacs")
 					; (load "~/emacs/conf/waka")
 (load "~/emacs/conf/ocaml")
+(load "~/emacs/conf/dockerfile")
+(load "~/emacs/conf/sidebar")
 
 (mk9/load-local-config "post")

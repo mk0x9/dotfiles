@@ -9,9 +9,10 @@
 
 (setq el-get-byte-compile nil)
 (add-to-list 'el-get-recipe-path "~/emacs/conf/el-get-recipes")
-(setq el-get-my-packages '(magit window-numbering smex js2-mode indent-guide
+(setq el-get-my-packages '(;magit
+			   window-numbering smex js2-mode indent-guide
 				 json-mode twittering-mode
-				 jazz-theme mac-classic-theme
+				 jazz-theme ; mac-classic-theme
 				 json-mode auto-complete php-mode scss-mode
 				 paredit vala-mode tern
 				 ; markdown-mode
@@ -23,7 +24,7 @@
 				 web-mode emmet-mode sx elisp-slime-nav
 				 ; nix-mode
 				 jade-mode yaml-mode
-				 tern swank-js slime
+				 tern ; swank-js slime
 				 color-theme-leuven
 				 ; auctex
 				 projectile flx
@@ -33,10 +34,16 @@
 				 elm-mode
 				 ensime
 				 cider
-				 go-errcheck
+				 ; go-errcheck
 				 sr-speedbar
 				 rjsx-mode
 				 prettier-js
-				 ocp-indent))
+				 ocp-indent
+				 tide
+				 exec-path-from-shell
+				 dockerfile-mode
+				 sidebar
+				 ))
 
+(el-get-bundle magit :checkout "v2.90.1")
 (el-get 'sync el-get-my-packages)
