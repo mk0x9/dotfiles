@@ -42,6 +42,6 @@
 					; (load "~/emacs/conf/waka")
 (load "~/emacs/conf/ocaml")
 (load "~/emacs/conf/dockerfile")
-(load "~/emacs/conf/sidebar")
+;(load "~/emacs/conf/sidebar")
 
 (mk9/load-local-config "post")

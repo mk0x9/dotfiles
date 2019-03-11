@@ -12,7 +12,7 @@
 (setq el-get-my-packages '(;magit
 			   window-numbering smex js2-mode indent-guide
 				 json-mode twittering-mode
-				 jazz-theme ; mac-classic-theme
+				 jazz-theme mac-classic-theme
 				 json-mode auto-complete php-mode scss-mode
 				 paredit vala-mode tern
 				 ; markdown-mode
@@ -42,7 +42,7 @@
 				 tide
 				 exec-path-from-shell
 				 dockerfile-mode
-				 sidebar
+				 ; sidebar
 				 ))
 
 (el-get-bundle magit :checkout "v2.90.1")
