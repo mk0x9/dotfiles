@@ -42,3 +42,6 @@
 (prefer-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8-unix)
 ;(add-hook 'after-init-hook #'global-flycheck-mode)
+(require 'editorconfig)
+(editorconfig-mode 1)
+(require 'feature-mode)

@@ -10,9 +10,14 @@
   ;; company is an optional dependency. You have to
   ;; install it separately via package-install
   ;; `M-x package-install [ret] company`
-  (company-mode +1))
+  (company-mode +1)
+  (define-key tide-mode-map (kbd "C-c r") 'tide-rename-symbol)
+  (define-key tide-mode-map (kbd "C-c l") 'tide-references)
+  (setenv "TS_NODE_COMPILER_OPTIONS" "{\"module\":\"commonjs\"}")
+  ;(define-key tide-mode-map (kbd "<mouse-2>") 'mk9/on-click-tide-jump-to-definition)
+  )
 
-;; aligns annotation to the right hand side
+;; annotation to the right hand side
 (setq company-tooltip-align-annotations t)
 
 ;; formats the buffer before saving
@@ -33,3 +38,11 @@
 
 					;(flycheck-add-mode 'typescript-tslint 'web-mode)
 					;(flycheck-add-mode 'javascript-eslint 'typescript-mode)
+
+(defun mk9/on-click-tide-jump-to-definition (@click)
+    "Mouse click to `tide-jump-to-definition'
+URL `http://ergoemacs.org/emacs/emacs_mouse_wheel_config.html'"
+  (interactive "e")
+  (let ((p1 (posn-point (event-start @click))))
+    (goto-char p1)
+    (tide-jump-to-definition p1)))

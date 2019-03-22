@@ -7,18 +7,18 @@
   (setq js2-indent-switch-body t)
   (set (make-local-variable 'sgml-basic-offset) 4)
   (flycheck-mode)
-  (tern-mode t)
-  (setq ac-sources
-	(append '(ac-source-tern-completion) ac-sources))
+  ; (tern-mode t)
+  ;; (setq ac-sources
+  ;; 	(append '(ac-source-tern-completion) ac-sources))
   (auto-complete-mode 1)
   ;(slime-js-minor-mode 1)
   )
 
-(eval-after-load 'tern
-  '(progn
-     (require 'tern-auto-complete)
-     (tern-ac-setup)
-     (setq tern-ac-on-dot nil)))
+;; (eval-after-load 'tern
+;;   '(progn
+;;      (require 'tern-auto-complete)
+;;      (tern-ac-setup)
+;;      (setq tern-ac-on-dot nil)))
 
 (defun mk9/js-yandex-style ()
   (setq js2-basic-offset 4))
