@@ -43,5 +43,6 @@
 (load "~/emacs/conf/ocaml")
 (load "~/emacs/conf/dockerfile")
 ;(load "~/emacs/conf/sidebar")
+(load "~/emacs/conf/irc")
 
 (mk9/load-local-config "post")

@@ -1,6 +1,7 @@
 (setq mac-option-modifier 'meta)
 
-(setq mk9/theme 'mac-classic)
+;(setq mk9/theme 'mac-classic)
+(setq mk9/theme 'sanityinc-tomorrow-day)
 (setq mk9/font "Inconsolata-16")
 
 ;; (setenv "PATH"

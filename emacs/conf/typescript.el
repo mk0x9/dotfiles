@@ -11,6 +11,7 @@
   ;; install it separately via package-install
   ;; `M-x package-install [ret] company`
   (company-mode +1)
+  (setq tide-completion-detailed t)
   (define-key tide-mode-map (kbd "C-c r") 'tide-rename-symbol)
   (define-key tide-mode-map (kbd "C-c l") 'tide-references)
   (setenv "TS_NODE_COMPILER_OPTIONS" "{\"module\":\"commonjs\"}")

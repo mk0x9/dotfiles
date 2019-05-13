@@ -9,7 +9,7 @@
 
 (setq el-get-byte-compile nil)
 (add-to-list 'el-get-recipe-path "~/emacs/conf/el-get-recipes")
-(setq el-get-my-packages '(;magit
+(setq el-get-my-packages '(magit
 			   window-numbering smex js2-mode indent-guide
 				 json-mode twittering-mode
 				 jazz-theme ; mac-classic-theme
@@ -45,8 +45,10 @@
 					; sidebar
 				 editorconfig
 				 cucumber
+				 circe
+				 groovy-emacs-mode
 				 ))
 
 (el-get-bundle mac-classic-theme :checkout "3cd6d173a350458e927d935c6f08c1fc709bbdf8")
-(el-get-bundle magit :checkout "v2.90.1")
+; (el-get-bundle magit :checkout "v2.90.1")
 (el-get 'sync el-get-my-packages)
