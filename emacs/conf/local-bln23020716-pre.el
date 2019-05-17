@@ -1,8 +1,10 @@
 (setq mac-option-modifier 'meta)
 
 ;(setq mk9/theme 'mac-classic)
-(setq mk9/theme 'sanityinc-tomorrow-day)
+;(setq mk9/theme 'sanityinc-tomorrow-day)
+(setq mk9/theme 'mac-classic)
 (setq mk9/font "Inconsolata-16")
+(setq mk9/font "Inconsolata-18")
 
 ;; (setenv "PATH"
 ;; 	(concat "/Users/mikhailkuryshev/.local/bin:/Users/mikhailkuryshev/.nvm/versions/node/v10.15.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:" (getenv "PATH")))
