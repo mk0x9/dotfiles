@@ -18,6 +18,7 @@
 (load "~/emacs/conf/common")
 (load "~/emacs/conf/visual")
 
+(load "~/emacs/conf/flycheck")
 (load "~/emacs/conf/git")
 (load "~/emacs/conf/indent-guide")
 (load "~/emacs/conf/window-numbering")
