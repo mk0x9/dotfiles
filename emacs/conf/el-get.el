@@ -20,7 +20,7 @@
 				 go-autocomplete
 				 flycheck
 				 yasnippet protobuf-mode gh go-test
-				 rust-mode company-mode haskell-mode
+				 rust-mode company-mode ; haskell-mode
 				 web-mode emmet-mode sx elisp-slime-nav
 				 ; nix-mode
 				 jade-mode yaml-mode
@@ -47,7 +47,10 @@
 				 cucumber
 				 circe
 				 groovy-emacs-mode
-				 intero
+				 lsp-mode
+				 lsp-ui
+				 lsp-haskell
+				 ; intero
 				 ))
 
 (el-get-bundle mac-classic-theme :checkout "3cd6d173a350458e927d935c6f08c1fc709bbdf8")

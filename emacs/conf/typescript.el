@@ -15,23 +15,27 @@
   (define-key tide-mode-map (kbd "C-c r") 'tide-rename-symbol)
   (define-key tide-mode-map (kbd "C-c l") 'tide-references)
   (setenv "TS_NODE_COMPILER_OPTIONS" "{\"module\":\"commonjs\"}")
+  ; (typescript-mode +1)
   ;(define-key tide-mode-map (kbd "<mouse-2>") 'mk9/on-click-tide-jump-to-definition)
   )
 
 ;; annotation to the right hand side
 (setq company-tooltip-align-annotations t)
 
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tide-mode))
+
 ;; formats the buffer before saving
 ;(add-hook 'before-save-hook 'tide-format-before-save)
 
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 
-;(require 'web-mode)
-;(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+;; (require 'web-mode)
+;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+
 ;; (add-hook 'web-mode-hook
 ;;           (lambda ()
-;;             (when (string-equal "tsx" (file-name-extension buffer-file-name))
-;;               (setup-tide-mode))))
+;; 	    (when (string-equal "tsx" (file-name-extension buffer-file-name))
+;; 	      (setup-tide-mode))))
 ;; enable typescript-tslint checker
 (eval-after-load 'flycheck
   '(flycheck-add-mode 'javascript-eslint 'typescript-mode))
