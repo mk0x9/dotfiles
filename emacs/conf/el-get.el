@@ -47,9 +47,9 @@
 				 cucumber
 				 circe
 				 groovy-emacs-mode
-				 lsp-mode
-				 lsp-ui
-				 lsp-haskell
+				 ; lsp-mode
+				 ; lsp-ui
+				 ; lsp-haskell
 				 ; intero
 				 ))
 
