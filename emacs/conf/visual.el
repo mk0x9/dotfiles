@@ -18,7 +18,7 @@
   (mk9/set-font))
 
 (defun mk9/set-font ()
-  (set-default-font
+  (set-frame-font
    (if (boundp 'mk9/font)
        mk9/font
      "Ubuntu Mono-13:weight=bold") nil t)
