@@ -45,5 +45,6 @@
 (load "~/emacs/conf/dockerfile")
 ;(load "~/emacs/conf/sidebar")
 (load "~/emacs/conf/irc")
+(load "~/emacs/conf/elixir")
 
 (mk9/load-local-config "post")

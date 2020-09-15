@@ -1,17 +1,20 @@
+(require 'lsp-mode)
+(add-hook 'typescript-mode-hook #'lsp)
+
 (defun setup-tide-mode ()
   (interactive)
-  (tide-setup)
+  ;(tide-setup)
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  (flycheck-add-next-checker 'typescript-tide 'javascript-eslint)
+  ;(tide-hl-identifier-mode +1)
+  ;(flycheck-add-next-checker 'typescript-tide 'javascript-eslint)
   (prettier-js-mode +1)
   ;; company is an optional dependency. You have to
   ;; install it separately via package-install
   ;; `M-x package-install [ret] company`
   (company-mode +1)
-  (setq tide-completion-detailed t)
+  ;(setq tide-completion-detailed t)
   (define-key tide-mode-map (kbd "C-c r") 'tide-rename-symbol)
   (define-key tide-mode-map (kbd "C-c l") 'tide-references)
   (setenv "TS_NODE_COMPILER_OPTIONS" "{\"module\":\"commonjs\"}")
@@ -27,7 +30,7 @@
 ;; formats the buffer before saving
 ;(add-hook 'before-save-hook 'tide-format-before-save)
 
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
+;(add-hook 'typescript-mode-hook #'setup-tide-mode)
 
 ;; (require 'web-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
